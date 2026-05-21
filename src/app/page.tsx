@@ -78,7 +78,7 @@ export default function ModelPage() {
         {model.description}
       </p>
 
-      <CtaButtons onlyfans={model.onlyfans} chatterbot={model.chatterbot} />
+      <CtaButtons onlyfans={model.onlyfans} chatterbot={model.chatterbot} wishlist={model.wishlist} />
 
       <div className="mt-8">
         <SocialLinks socials={model.socials as Record<string, string>} />

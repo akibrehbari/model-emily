@@ -19,11 +19,12 @@ function ChatIcon(props: SVGProps<SVGSVGElement>) {
 interface CtaButtonsProps {
   onlyfans: string;
   chatterbot: string;
+  wishlist?: string;
 }
 
-export function CtaButtons({ onlyfans, chatterbot }: CtaButtonsProps) {
+export function CtaButtons({ onlyfans, chatterbot, wishlist }: CtaButtonsProps) {
   return (
-    <div className="flex flex-col sm:flex-row items-center gap-3 mt-6 w-full max-w-sm">
+    <div className="flex flex-col items-center gap-3 mt-6 w-full max-w-sm">
       <a
         href={onlyfans}
         target="_blank"
@@ -33,15 +34,16 @@ export function CtaButtons({ onlyfans, chatterbot }: CtaButtonsProps) {
         <OnlyFansIcon className="w-5 h-5" />
         Message me
       </a>
-      {/* <a
-        href={chatterbot}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="flex items-center justify-center gap-2.5 w-full px-6 py-3.5 rounded-full border border-white/20 bg-white/5 text-white font-medium text-sm backdrop-blur-sm transition-all duration-300 hover:bg-white/10 hover:border-white/30 hover:scale-[1.02]"
-      >
-        <ChatIcon className="w-5 h-5" />
-        Chatterbot
-      </a> */}
+      {wishlist && (
+        <a
+          href={wishlist}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="flex items-center justify-center w-full px-6 py-3.5 rounded-full border border-white/30 bg-white/10 text-white font-medium text-sm backdrop-blur-sm transition-all duration-300 hover:bg-white/20 hover:scale-[1.02]"
+        >
+          wishlist! Spoil me 🥺
+        </a>
+      )}
     </div>
   );
 }
