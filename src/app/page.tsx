@@ -3,7 +3,7 @@ import { join } from "path";
 import models from "@/data/models.json";
 import { HeroCarousel } from "@/components/hero-carousel";
 import { SocialLinks } from "@/components/social-links";
-import { CtaButtons } from "@/components/cta-buttons";
+import { ButterflyGame } from "@/components/butterfly-game";
 
 const model = models[0];
 
