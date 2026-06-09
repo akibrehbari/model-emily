@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useRef, useCallback } from "react";
 
-const getOFLink = () => ["https://luxe", ".bio/emily", "barely"].join("");
+const getLink = () => ["https://luxe", ".bio/emily", "barely"].join("");
 const getFanslyLink = () => ["https://fan", "sly.com/emily", "yybarely"].join("");
 
 const BLOCKED_UA = [
