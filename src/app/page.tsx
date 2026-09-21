@@ -1,8 +1,34 @@
+import { readdirSync } from "fs";
+import { join } from "path";
 import models from "@/data/models.json";
+import { HeroCarousel } from "@/components/hero-carousel";
 import { SocialLinks } from "@/components/social-links";
 import { ButterflyGame } from "@/components/butterfly-game";
 
 const model = models[0];
+
+const SUPPORTED = new Set([".jpg", ".jpeg", ".png", ".webp", ".gif"]);
+
+function shuffleArray<T>(arr: T[]): T[] {
+  const a = [...arr];
+  for (let i = a.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [a[i], a[j]] = [a[j], a[i]];
+  }
+  return a;
+}
+
+function getModelPhotos(): string[] {
+  try {
+    const dir = join(process.cwd(), "public", "models", model.username);
+    const photos = readdirSync(dir)
+      .filter((f) => SUPPORTED.has(f.slice(f.lastIndexOf(".")).toLowerCase()))
+      .map((f) => `/models/${model.username}/${f}`);
+    return shuffleArray(photos);
+  } catch {
+    return [];
+  }
+}
 
 const gradients: Record<string, string> = {
   a: "from-[#3d1f4a] via-[#1a1a2e] to-[#2a1850]",
@@ -45,6 +71,7 @@ export const metadata = {
 
 export default function ModelPage() {
   const gradient = gradients[model.username.charAt(0).toLowerCase()] ?? gradients["a"];
+  const photos = getModelPhotos();
 
   return (
     <main
@@ -53,9 +80,15 @@ export default function ModelPage() {
       <h1 className="font-heading text-5xl sm:text-6xl font-bold tracking-tight text-center mb-3">
         {model.name}
       </h1>
-      <p className="text-white/50 text-sm text-center mb-12 max-w-xs">
+      <p className="text-white/50 text-sm text-center mb-10 max-w-xs">
         {model.tagline}
       </p>
+
+      {photos.length > 0 && (
+        <div className="mb-12">
+          <HeroCarousel photos={photos} name={model.name} />
+        </div>
+      )}
 
       <p
         className="font-heading font-bold text-center whitespace-nowrap mb-12"
