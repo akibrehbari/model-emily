@@ -2,8 +2,8 @@
 
 import { useState, useEffect, useRef, useCallback } from "react";
 
-const getLink = () => ["https://onlyfans", ".com/emily", "bunni"].join("");
-const getFanslyLink = () => ["https://fan", "sly.com/emily", "yybarely"].join("");
+const getLink = () => ["https://onlyfans", ".com/emily", "ybun"].join("");
+const getFanslyLink = () => ["https://fan", "sly.com/emily", "bunni"].join("");
 
 const BLOCKED_UA = [
   "facebookexternalhit", "facebot", "twitterbot", "linkedinbot",
