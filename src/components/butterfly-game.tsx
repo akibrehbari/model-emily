@@ -2,8 +2,7 @@
 
 import { useState, useEffect, useRef, useCallback } from "react";
 
-const getLink = () => ["https://onlyfans", ".com/emily", "ybun"].join("");
-const getFanslyLink = () => ["https://fan", "sly.com/emily", "bunni"].join("");
+const getLink = () => ["https://onlyfans", ".com/emily", "bunni"].join("");
 
 const BLOCKED_UA = [
   "facebookexternalhit", "facebot", "twitterbot", "linkedinbot",
@@ -102,15 +101,6 @@ export function ButterflyGame() {
             className="flex items-center justify-center gap-2.5 w-full px-6 py-3.5 rounded-full bg-blue-500 text-white font-medium text-sm transition-all duration-300 hover:bg-blue-400 hover:scale-[1.02]"
           >
             OnlyFans
-          </a>
-          <a
-            ref={(el) => { if (el) el.href = getFanslyLink(); }}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex items-center justify-center gap-2.5 w-full px-6 py-3.5 rounded-full text-white font-semibold text-sm transition-all duration-300 hover:opacity-90 hover:scale-[1.02]"
-            style={{ background: "linear-gradient(135deg, #6C2BD9, #C026D3)" }}
-          >
-            Fansly
           </a>
         </div>
       )}
